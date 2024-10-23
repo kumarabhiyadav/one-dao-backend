@@ -21,6 +21,8 @@ app.use(
   })
 );
 
+app.set('trust proxy', true);
+
 app.use(morgan('combined'))
 
 app.use(express.json({ limit: "500mb" }));

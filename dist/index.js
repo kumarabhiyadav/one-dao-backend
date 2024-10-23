@@ -28,6 +28,7 @@ const port = process.env.PORT;
 app.use((0, cors_1.default)({
     origin: "*",
 }));
+app.set('trust proxy', true);
 app.use((0, morgan_1.default)('combined'));
 app.use(express_1.default.json({ limit: "500mb" }));
 (() => __awaiter(void 0, void 0, void 0, function* () {
