@@ -27,7 +27,7 @@ export const login = async (req: any, res: Response) => {
         .json({ success: true, result: user, token, message: "Logged in" });
     } else {
       res
-        .status(400)
+        .status(500)
         .json({ success: false, message: "Invalid email or password" });
     }
   } else {
@@ -81,7 +81,7 @@ export const signup = async (req: Request, res: Response) => {
       });
 
       if (user) {
-        return res.status(400).json({
+        return res.status(500).json({
           success: false,
           message: "User Already Exists with this email",
         });
@@ -107,14 +107,14 @@ export const signup = async (req: Request, res: Response) => {
             result: { name, email, country, id },
           });
         } else {
-          return res.status(400).json({
+          return res.status(500).json({
             success: false,
             message: "unable to create user",
           });
         }
       }
     } else {
-      return res.status(400).json({
+      return res.status(500).json({
         success: false,
         message: "Invalid OTP",
       });

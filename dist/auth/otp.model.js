@@ -20,7 +20,7 @@ OTP.init({
     email: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        unique: false,
     },
     createdAt: {
         type: sequelize_1.DataTypes.DATE,

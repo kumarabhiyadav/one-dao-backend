@@ -18,7 +18,7 @@ const user_service_1 = __importDefault(require("../users/user.service"));
 const userService = new user_service_1.default();
 const createAccessToken = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     let token = (0, jsonwebtoken_1.sign)({ userId }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '5m'
+        expiresIn: '10m'
     });
     return token;
 });

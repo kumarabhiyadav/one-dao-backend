@@ -35,7 +35,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         else {
             res
-                .status(400)
+                .status(500)
                 .json({ success: false, message: "Invalid email or password" });
         }
     }
@@ -88,7 +88,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 where: { email },
             });
             if (user) {
-                return res.status(400).json({
+                return res.status(500).json({
                     success: false,
                     message: "User Already Exists with this email",
                 });
@@ -110,7 +110,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     });
                 }
                 else {
-                    return res.status(400).json({
+                    return res.status(500).json({
                         success: false,
                         message: "unable to create user",
                     });
@@ -118,7 +118,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             }
         }
         else {
-            return res.status(400).json({
+            return res.status(500).json({
                 success: false,
                 message: "Invalid OTP",
             });

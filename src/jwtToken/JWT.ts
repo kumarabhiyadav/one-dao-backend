@@ -8,7 +8,7 @@ export const createAccessToken = async (
   userId: any,
 ): Promise<string> => {
   let token = sign({ userId }, process.env.ACCESS_TOKEN_SECRET!, {
-    expiresIn: '5m' 
+    expiresIn: '10m' 
   });
   return token;
 };

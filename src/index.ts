@@ -35,10 +35,10 @@ app.use(express.json({ limit: "500mb" }));
 (async () => {
   await DataBaseConnect();
   await User.sync({
-    force:true
+    // force:true
   }); 
   await Product.sync({
-    force:true
+    // force:true
   }); 
   await OTP.sync({
     force:true

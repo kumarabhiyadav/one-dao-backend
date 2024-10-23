@@ -33,12 +33,8 @@ app.use((0, morgan_1.default)('combined'));
 app.use(express_1.default.json({ limit: "500mb" }));
 (() => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, connection_1.DataBaseConnect)();
-    yield user_model_1.default.sync({
-        force: true
-    });
-    yield product_model_1.default.sync({
-        force: true
-    });
+    yield user_model_1.default.sync({});
+    yield product_model_1.default.sync({});
     yield otp_model_1.default.sync({
         force: true
     });
