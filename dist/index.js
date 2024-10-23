@@ -21,6 +21,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const product_model_1 = __importDefault(require("./product/product.model"));
 const globalErrorHandler_1 = require("./Helper/globalErrorHandler");
 const otp_model_1 = __importDefault(require("./auth/otp.model"));
+const countryCheck_1 = require("./middleware/countryCheck");
 dotenv_1.default.config();
 const mainRoutes = require("./mainroutes.routes");
 const app = (0, express_1.default)();
@@ -42,6 +43,7 @@ app.use(express_1.default.json({ limit: "500mb" }));
         foreignKey: 'user',
     });
 }))();
+app.use(countryCheck_1.CountryCheck);
 app.use("/api", mainRoutes);
 app.use(globalErrorHandler_1.errorHandler);
 app.get("/", (req, res) => {
