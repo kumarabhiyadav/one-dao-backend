@@ -61,7 +61,7 @@ class UserService {
         otp,
         email,
         createdAt: {
-          [Op.gte]: oneMinuteAgo, // Greater than or equal to one minute ago
+          [Op.lte]: oneMinuteAgo, // Greater than or equal to one minute ago
         },
       },
     });

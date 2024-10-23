@@ -66,7 +66,7 @@ class UserService {
                     otp,
                     email,
                     createdAt: {
-                        [sequelize_1.Op.gte]: oneMinuteAgo,
+                        [sequelize_1.Op.lte]: oneMinuteAgo,
                     },
                 },
             });
