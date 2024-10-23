@@ -99,7 +99,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     email,
                     password: encpass,
                     name,
-                    country,
+                    country: "",
                 });
                 if (user) {
                     let { name, email, country, id } = user;

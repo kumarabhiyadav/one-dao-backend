@@ -96,7 +96,7 @@ export const signup = async (req: Request, res: Response) => {
           email,
           password: encpass,
           name,
-          country,
+          country:"",
         });
 
         if (user) {
