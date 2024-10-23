@@ -52,10 +52,10 @@ app.use(express.json({ limit: "500mb" }));
 })();
 
 // ############### === DB CONNECTION END === ########################
+app.use(CountryCheck)
 
 app.use("/api", mainRoutes);
 
-app.use(CountryCheck)
 
 app.use(errorHandler);
 // Status Check

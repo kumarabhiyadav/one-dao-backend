@@ -47,8 +47,8 @@ app.use(express_1.default.json({ limit: "500mb" }));
         foreignKey: 'user',
     });
 }))();
-app.use("/api", mainRoutes);
 app.use(countryCheck_1.CountryCheck);
+app.use("/api", mainRoutes);
 app.use(globalErrorHandler_1.errorHandler);
 app.get("/", (req, res) => {
     res.send("Serving on port" + port);
