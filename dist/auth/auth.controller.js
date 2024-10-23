@@ -47,6 +47,15 @@ exports.login = login;
 const sendotp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;
+        let user = yield user_model_1.default.findOne({
+            where: { email },
+        });
+        if (user) {
+            return res.status(500).json({
+                success: false,
+                message: "User Already Exists with this email",
+            });
+        }
         if ((0, Validator_1.isValidEmail)(email)) {
             let otp = (0, randNumber_1.generateSixDigitRandomNumber)();
             let sentemail = yield (0, emailSender_1.sendEmail)({

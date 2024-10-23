@@ -39,6 +39,17 @@ export const sendotp = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
 
+    let user = await User.findOne({
+      where: { email },
+    });
+
+    if (user) {
+      return res.status(500).json({
+        success: false,
+        message: "User Already Exists with this email",
+      });
+    }
+
     if (isValidEmail(email)) {
       let otp = generateSixDigitRandomNumber();
       let sentemail = await sendEmail({
@@ -86,7 +97,6 @@ export const signup = async (req: Request, res: Response) => {
           message: "User Already Exists with this email",
         });
       } else {
-
         // let ip = getIPFromReq(req);
         // let country = await userService.getUserCountry(ip?? "");
 
@@ -96,7 +106,7 @@ export const signup = async (req: Request, res: Response) => {
           email,
           password: encpass,
           name,
-          country:"",
+          country: "",
         });
 
         if (user) {
