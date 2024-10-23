@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import UserService from "../users/user.service";
 import { AllowedCountry } from "../Helper/CountryList";
+import { getIPFromReq } from "src/Helper/getIP";
 
 const userService = new UserService();
 
@@ -10,14 +11,7 @@ export const CountryCheck = async (
   next: NextFunction
 ) => {
   try {
-    const forwarded = req.headers['x-forwarded-for'];
-  const clientIp = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
-
-  // If it's an IPv6-mapped IPv4 address, convert it
-  const ip = clientIp && clientIp.includes("::ffff:")
-    ? clientIp.split("::ffff:")[1]
-    : clientIp;
-    console.log(req);
+    let ip = getIPFromReq(req);
     let country = await userService.getUserCountry(ip ?? "");
     console.log(country);
     if (AllowedCountry.includes(country)) {

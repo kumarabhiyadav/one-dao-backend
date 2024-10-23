@@ -15,15 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryCheck = void 0;
 const user_service_1 = __importDefault(require("../users/user.service"));
 const CountryList_1 = require("../Helper/CountryList");
+const getIP_1 = require("src/Helper/getIP");
 const userService = new user_service_1.default();
 const CountryCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const forwarded = req.headers['x-forwarded-for'];
-        const clientIp = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
-        const ip = clientIp && clientIp.includes("::ffff:")
-            ? clientIp.split("::ffff:")[1]
-            : clientIp;
-        console.log(req);
+        let ip = (0, getIP_1.getIPFromReq)(req);
         let country = yield userService.getUserCountry(ip !== null && ip !== void 0 ? ip : "");
         console.log(country);
         if (CountryList_1.AllowedCountry.includes(country)) {

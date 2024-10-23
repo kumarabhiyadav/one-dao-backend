@@ -8,6 +8,7 @@ import { sendEmail } from "..//emails/emailSender";
 import { generateSixDigitRandomNumber } from "../Helper/randNumber";
 import { isValidEmail } from "../Helper/Validator";
 import OTP from "./otp.model";
+import { getIPFromReq } from "../Helper/getIP";
 
 const userService = new UserService();
 
@@ -85,7 +86,9 @@ export const signup = async (req: Request, res: Response) => {
           message: "User Already Exists with this email",
         });
       } else {
-        let country = await userService.getUserCountry(req.ip ?? "");
+
+        let ip = getIPFromReq(req);
+        let country = await userService.getUserCountry(ip?? "");
 
         const encpass = bcrypt.hashSync(password, 1);
 
