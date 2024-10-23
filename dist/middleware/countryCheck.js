@@ -19,6 +19,7 @@ const userService = new user_service_1.default();
 const CountryCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
+        console.log(req);
         let country = yield userService.getUserCountry((_a = req.ip) !== null && _a !== void 0 ? _a : '');
         console.log(country);
         if (CountryList_1.AllowedCountry.includes(country)) {

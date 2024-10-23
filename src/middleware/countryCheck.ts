@@ -10,7 +10,7 @@ export const CountryCheck = async (
     next: NextFunction
 ) => {
     try {
-
+        console.log(req);
         let country = await userService.getUserCountry(req.ip ?? '');
         console.log(country);
         if (AllowedCountry.includes(country)) {
