@@ -9,7 +9,7 @@ class Product extends sequelize_1.Model {
 }
 Product.init({
     id: {
-        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
+        type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
@@ -22,7 +22,7 @@ Product.init({
         allowNull: false,
     },
     user: {
-        type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
 }, {

@@ -27,12 +27,12 @@ class OTP extends Model<OTPAttributes, OTPCreationAttributes> implements OTPAttr
 // Initialize the OTP model
 OTP.init({
   id: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
   otp: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   email: {

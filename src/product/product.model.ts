@@ -30,7 +30,7 @@ class Product extends Model<ProductAttributes, ProductCreationAttributes> implem
 // Initialize the Product model
 Product.init({
     id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
@@ -45,7 +45,7 @@ Product.init({
     },
 
     user: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER,
         allowNull: false,
 
     },
