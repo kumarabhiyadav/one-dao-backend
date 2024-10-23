@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryCheck = void 0;
 const user_service_1 = __importDefault(require("../users/user.service"));
 const CountryList_1 = require("../Helper/CountryList");
-const getIP_1 = require("src/Helper/getIP");
+const getIP_1 = require("../Helper/getIP");
 const userService = new user_service_1.default();
 const CountryCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
