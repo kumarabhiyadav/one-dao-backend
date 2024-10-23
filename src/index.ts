@@ -8,6 +8,7 @@ import morgan from "morgan";
 import Product from "./product/product.model";
 import { errorHandler } from "./Helper/globalErrorHandler";
 import OTP from "./auth/otp.model";
+import { CountryCheck } from "./middleware/countryCheck";
 dotenv.config();
 
 const mainRoutes = require("./mainroutes.routes");
@@ -53,6 +54,8 @@ app.use(express.json({ limit: "500mb" }));
 // ############### === DB CONNECTION END === ########################
 
 app.use("/api", mainRoutes);
+
+app.use(CountryCheck)
 
 app.use(errorHandler);
 // Status Check
