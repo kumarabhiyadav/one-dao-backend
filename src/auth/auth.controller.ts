@@ -87,8 +87,8 @@ export const signup = async (req: Request, res: Response) => {
         });
       } else {
 
-        let ip = getIPFromReq(req);
-        let country = await userService.getUserCountry(ip?? "");
+        // let ip = getIPFromReq(req);
+        // let country = await userService.getUserCountry(ip?? "");
 
         const encpass = bcrypt.hashSync(password, 1);
 

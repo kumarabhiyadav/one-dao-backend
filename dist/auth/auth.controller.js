@@ -21,7 +21,6 @@ const emailSender_1 = require("..//emails/emailSender");
 const randNumber_1 = require("../Helper/randNumber");
 const Validator_1 = require("../Helper/Validator");
 const otp_model_1 = __importDefault(require("./otp.model"));
-const getIP_1 = require("../Helper/getIP");
 const userService = new user_service_1.default();
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { email, password } = req.body;
@@ -95,8 +94,6 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 });
             }
             else {
-                let ip = (0, getIP_1.getIPFromReq)(req);
-                let country = yield userService.getUserCountry(ip !== null && ip !== void 0 ? ip : "");
                 const encpass = bcrypt_1.default.hashSync(password, 1);
                 user = yield userService.createUser({
                     email,
