@@ -52,19 +52,19 @@ class UserService {
   }
 
   public async validateOTP(email: string, otp: number) {
-    const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
+    const threeMinutesAgo = new Date(Date.now() - 3 * 60 * 1000); 
 
     let otpValid: OTP | null;
 
     otpValid = await OTP.findOne({
-      where: {
-        otp,
-        email,
-        createdAt: {
-          [Op.lte]: oneMinuteAgo, // Greater than or equal to one minute ago
+        where: {
+          otp,
+          email,
+          createdAt: {
+            [Op.gte]: threeMinutesAgo, 
+          },
         },
-      },
-    });
+      });
 
     if (otpValid) return true;
     return false;

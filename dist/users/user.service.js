@@ -59,14 +59,14 @@ class UserService {
     }
     validateOTP(email, otp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
+            const threeMinutesAgo = new Date(Date.now() - 3 * 60 * 1000);
             let otpValid;
             otpValid = yield otp_model_1.default.findOne({
                 where: {
                     otp,
                     email,
                     createdAt: {
-                        [sequelize_1.Op.lte]: oneMinuteAgo,
+                        [sequelize_1.Op.gte]: threeMinutesAgo,
                     },
                 },
             });
