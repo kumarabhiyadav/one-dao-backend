@@ -17,10 +17,14 @@ const user_service_1 = __importDefault(require("../users/user.service"));
 const CountryList_1 = require("../Helper/CountryList");
 const userService = new user_service_1.default();
 const CountryCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     try {
-        console.log(req.socket.remoteAddress);
-        let country = yield userService.getUserCountry((_a = req.ip) !== null && _a !== void 0 ? _a : '');
+        const forwarded = req.headers['x-forwarded-for'];
+        const clientIp = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
+        const ip = clientIp && clientIp.includes("::ffff:")
+            ? clientIp.split("::ffff:")[1]
+            : clientIp;
+        console.log(req);
+        let country = yield userService.getUserCountry(ip !== null && ip !== void 0 ? ip : "");
         console.log(country);
         if (CountryList_1.AllowedCountry.includes(country)) {
             return next();
