@@ -10,5 +10,5 @@ const JWT_1 = require("../jwtToken/JWT");
 exports.ProductRoutes = express_1.default.Router();
 exports.ProductRoutes.post("/createProduct", JWT_1.verifyJwtToken, product_controller_1.createProduct);
 exports.ProductRoutes.put("/updateProduct", JWT_1.verifyJwtToken, product_controller_1.updateProduct);
-exports.ProductRoutes.delete("/deleteProduct", JWT_1.verifyJwtToken, product_controller_1.deleteProduct);
+exports.ProductRoutes.delete("/deleteProduct/:id", JWT_1.verifyJwtToken, product_controller_1.deleteProduct);
 exports.ProductRoutes.get("/getProduct", JWT_1.verifyJwtToken, product_controller_1.getProduct);

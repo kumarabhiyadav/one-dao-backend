@@ -98,7 +98,8 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 });
 exports.updateProduct = updateProduct;
 const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let { id, user } = req.body;
+    let { user } = req.body;
+    let { id, } = req.params;
     try {
         let product = yield product_model_1.default.findOne({ where: { id, user } });
         if (product) {

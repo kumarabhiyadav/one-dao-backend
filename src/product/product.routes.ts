@@ -10,5 +10,5 @@ import { verifyJwtToken } from "../jwtToken/JWT";
 export const ProductRoutes: Router = express.Router();
 ProductRoutes.post("/createProduct", verifyJwtToken, createProduct);
 ProductRoutes.put("/updateProduct", verifyJwtToken, updateProduct);
-ProductRoutes.delete("/deleteProduct", verifyJwtToken, deleteProduct);
+ProductRoutes.delete("/deleteProduct/:id", verifyJwtToken, deleteProduct);
 ProductRoutes.get("/getProduct", verifyJwtToken, getProduct);
