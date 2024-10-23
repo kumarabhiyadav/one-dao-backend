@@ -20,6 +20,7 @@ const CountryCheck = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     var _a;
     try {
         let country = yield userService.getUserCountry((_a = req.ip) !== null && _a !== void 0 ? _a : '');
+        console.log(country);
         if (CountryList_1.AllowedCountry.includes(country)) {
             return next();
         }
